@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import {Container, Card, Row, Col} from 'react-bootstrap';
 
-class FeatureProducts extends Component {
+class FeaturedProducts extends Component {
     state = {  }
-    render() { 
+    render() {
         return ( 
         <Fragment>
-            <Container fluid={true}>
+            <Container className="text-center" fluid={true}>
                 <h4 className="section-title"> Feature product </h4>
                 <h6 className="section-sub-title"> All 2020 product is here </h6>
                 <Row>
@@ -77,4 +77,4 @@ class FeatureProducts extends Component {
     }
 }
  
-export default FeatureProducts;
+export default FeaturedProducts;

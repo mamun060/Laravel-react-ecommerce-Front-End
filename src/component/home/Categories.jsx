@@ -6,7 +6,7 @@ class Categories extends Component {
     render() { 
         return ( 
             <Fragment>
-                <Container fluid={true}>
+                <Container className="text-center" fluid={true}>
                 <h4 className="section-title"> Product Category </h4>
                 <h6 className="section-sub-title"> All Category list here </h6>
                     <Row>

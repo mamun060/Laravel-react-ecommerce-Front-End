@@ -1,38 +1,31 @@
-import React, {Component, Fragment } from 'react';
-import FeaturedProducts from '../component/home/FeaturedProducts';
-import Categories from '../component/home/Categories';
-import Collection from '../component/home/Collection';
-import NewArrival from '../component/home/NewArrival';
-import HomeTop from '../component/home/HomeTop';
+import React, { Component ,Fragment } from 'react';
+
 import NavMenuDesktop from '../component/common/NavMenuDesktop';
 import NavMenuMobile from '../component/common/NavMenuMobile';
-import HomeTopMobile from '../component/home/HomeTopMobile';
 import FooterDesktop from '../component/common/FooterDesktop';
 import FooterMobile from '../component/common/FooterMobile';
+import UserOnboard from '../component/common/UserOnboard';
 
 
-class HomePage extends Component {
-
+class UserOnboardPage extends Component {
+    
     componentDidMount() {
         window.scroll(0,0)
     }
 
-    render() {
-        return (
+    render() { 
+        return (  
             <Fragment>
                 <div className="Desktop">
                     <NavMenuDesktop/>
-                    <HomeTop/>
+                   
                 </div>
                 <div className="Mobile">
                     <NavMenuMobile/>
-                    <HomeTopMobile/>
+                    
                 </div>
 
-                <FeaturedProducts/>
-                <NewArrival/>
-                <Collection/>
-                <Categories/>
+                <UserOnboard />
 
                 <div className="Desktop">
                     <FooterDesktop/>
@@ -40,9 +33,10 @@ class HomePage extends Component {
                 <div className="Mobile">
                     <FooterMobile/>
                 </div>
+
             </Fragment>
         );
     }
 }
-
-export default HomePage;
+ 
+export default UserOnboardPage;

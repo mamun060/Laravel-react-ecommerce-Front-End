@@ -6,7 +6,7 @@ class Collection extends Component {
     render() { 
         return ( 
             <Fragment>
-                <Container>
+                <Container className="text-center">
                     <h4 className="section-title"> The Best Collection </h4>
                     <h6 className="section-sub-title"> Please your letest product </h6>
                 </Container>

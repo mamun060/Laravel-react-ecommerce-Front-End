@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component,Fragment } from 'react';
 import { Container, Card, Button} from 'react-bootstrap';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import {Link} from 'react-router-dom';
 
 class NewArrival extends Component {
 
@@ -72,6 +74,7 @@ class NewArrival extends Component {
 
                 <Slider ref={c=>(this.slider=c)} {...settings}>
                 <div>
+                    <Link to="/productdetails"> 
                         <Card className="image-box">
                             <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
                             
@@ -80,8 +83,11 @@ class NewArrival extends Component {
                                 <p className="product-price-on-card"><span>Price:</span>1200$</p>
                             </Card.Body>
                         </Card>
+                    </Link>
                 </div>
+
                 <div>
+                  <Link to="/productdetails"> 
                        <Card className="image-box">
                             <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
                             
@@ -90,8 +96,11 @@ class NewArrival extends Component {
                                 <p className="product-price-on-card"><span>Price:</span>1200$</p>
                             </Card.Body>
                         </Card>
+                    </Link>
                 </div>
+
                 <div>
+                     <Link to="/productdetails"> 
                          <Card className="image-box">
                             <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
                             
@@ -100,6 +109,7 @@ class NewArrival extends Component {
                                 <p className="product-price-on-card"><span>Price:</span>1200$</p>
                             </Card.Body>
                         </Card>
+                    </Link>
                 </div>
                 <div>
                        <Card className="image-box">
