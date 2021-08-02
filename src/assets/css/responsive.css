@@ -12,7 +12,7 @@
         font-size: 13px;
     }
     .Mobile{
-
+        display: visible;
     }
     .Desktop{
         display: none;
@@ -46,7 +46,7 @@
         height: 180px;
     }
     .Mobile{
-
+        display: visible;
     }
     .Desktop{
         display: none;
@@ -75,7 +75,7 @@
         font-size: 13px;
     }
     .Mobile{
-
+        display: visible;
     }
     .Desktop{
         display: none;
@@ -103,6 +103,7 @@
         display: none;
     }
     .Desktop{
+        display: visible;
     }
 }
 
@@ -113,6 +114,7 @@
         display: none;
     }
     .Desktop{
+        display: visible;
     }
 }
 
@@ -123,6 +125,7 @@
         display: none;
     }
     .Desktop{
+        display: visible;
     }
 
 }
