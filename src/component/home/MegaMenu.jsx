@@ -8,7 +8,6 @@ class MegaMenu extends Component {
         this.state={
             data:props.data
         }
-
     }
 
     MenuItemClick=(event)=>{

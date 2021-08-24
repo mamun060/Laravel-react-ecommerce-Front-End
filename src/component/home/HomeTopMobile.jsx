@@ -11,7 +11,7 @@ class HomeTopMobile extends Component {
                 <Container className="p-0 m-0 overflow-hidden" fluid={true}>
                        <Row className="p-0 m-0 overflow-hidden">
                         <Col className="p-0 m-0 overflow-hidden" lg={9} md={9} sm={12}>
-                                <SliderHome/>
+                                
                         </Col>
                     </Row>
                 </Container>
