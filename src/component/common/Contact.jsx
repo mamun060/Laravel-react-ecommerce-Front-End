@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, {Component, Fragment} from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import validation from "../../validation/validation";

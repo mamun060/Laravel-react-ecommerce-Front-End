@@ -18,6 +18,7 @@ class ContactPage extends Component {
                 <div className="Desktop">
                     <NavMenuDesktop/>
                 </div>
+
                 <div className="Mobile">
                     <NavMenuMobile/>
                 </div>

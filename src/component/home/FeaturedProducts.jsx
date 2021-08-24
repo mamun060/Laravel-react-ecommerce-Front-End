@@ -1,75 +1,67 @@
 import React, { Component, Fragment } from 'react';
 import {Container, Card, Row, Col} from 'react-bootstrap';
+import axios from "axios";
+import ApiURL from "../../api/ApiURL";
+
 
 class FeaturedProducts extends Component {
-    state = {  }
+   constructor(){
+       super();
+       this.state={
+           ProductData:[]
+       }
+   }
+
+   componentDidMount(){
+       axios.get(ApiURL.ProductListByRemark("FEATURE")).then(response=>{
+           this.setState({ProductData:response.data})
+       }).catch(error=>{
+
+       });
+   }
+
+
     render() {
+
+        const MyList = this.state.ProductData;
+
+        const MyView=MyList.map((ProductList,i)=>{
+            
+            if(ProductList.special_price=="NA"){
+                return <Col className="p-1" key={1} xl={2} lg={2} md={2} sm={4} xs={6} >
+                    <Card className="card h-100 w-100  image-box ">
+                        <img src={ProductList.image} alt=""/>
+                        <Card.Body>
+                            <h5 className="product-name-on-card">{ProductList.title }</h5>
+                            <p className="product-price-on-card">Price: { ProductList.price}TK</p>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            }
+            else{
+
+                return <Col className="p-1" key={1} xl={2} lg={2} md={2} sm={4} xs={6} >
+                    <Card className="card h-100 w-100  image-box ">
+                        <img src={ProductList.image} alt=""/>
+                        <Card.Body>
+                            <h5 className="product-name-on-card">{ProductList.title }</h5>
+                            <p className="product-price-on-card">
+                                Price: <strike class="text-secondary">{ ProductList.price}TK</strike>  { ProductList.special_price}TK
+                            </p>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            }
+
+        })
+
         return ( 
         <Fragment>
             <Container className="text-center" fluid={true}>
                 <h4 className="section-title"> Feature product </h4>
                 <h6 className="section-sub-title"> All 2020 product is here </h6>
                 <Row>
-                    <Col key={1} lg={2} xl={2} md={2} sm={4} xs={6}>
-                    <Card className="image-box">
-                        <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                        <Card.Body>
-                            <p className="product-name-on-card">This Lenovo Leptop</p>
-                            <p className="product-price-on-card"><span>Price:</span>1200$</p>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-                    
-                    <Col key={1} lg={2} xl={2} md={2} sm={4} xs={6}>
-                    <Card className="image-box">
-                        <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                        <Card.Body>
-                            <p className="product-name-on-card">This Lenovo Leptop</p>
-                            <p className="product-price-on-card"><span>Price:</span>1200$</p>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-
-                    <Col key={1} lg={2} xl={2} md={2} sm={4} xs={6}>
-                    <Card className="image-box">
-                        <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                        <Card.Body>
-                            <p className="product-name-on-card">This Lenovo Leptop</p>
-                            <p className="product-price-on-card"><span>Price:</span>1200$</p>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-
-                    <Col key={1} lg={2} xl={2} md={2} sm={4} xs={6}>
-                    <Card className="image-box">
-                        <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                        <Card.Body>
-                            <p className="product-name-on-card">This Lenovo Leptop</p>
-                            <p className="product-price-on-card"><span>Price:</span>1200$</p>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-
-                    <Col key={1} lg={2} xl={2} md={2} sm={4} xs={6}>
-                    <Card className="image-box">
-                        <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                        <Card.Body>
-                            <p className="product-name-on-card">This Lenovo Leptop</p>
-                            <p className="product-price-on-card"><span>Price:</span>1200$</p>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-
-                    <Col key={1} lg={2} xl={2} md={2} sm={4} xs={6}>
-                    <Card className="image-box">
-                        <img src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                        <Card.Body>
-                            <p className="product-name-on-card">This Lenovo Leptop</p>
-                            <p className="product-price-on-card"><span>Price:</span>1200$</p>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-
+                   {MyView}
                 </Row>
             </Container>
         </Fragment> 

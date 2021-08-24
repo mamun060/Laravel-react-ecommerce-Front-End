@@ -12,6 +12,8 @@ import NotificationPage from '../papes/NotificationPage';
 import FavouritePage from '../papes/FavouritePage';
 import CartPage from '../papes/CartPage';
 import OrderPage from '../papes/OrderPage';
+import ProductListByCategory from '../papes/ProductListByCategory';
+import ProductListBySubCategory from '../papes/ProductListBySubCategory';
 
 
 class AppRoute extends Component {
@@ -32,6 +34,10 @@ class AppRoute extends Component {
                 <Route  exact path={"/favourite"} component={FavouritePage} />
                 <Route  exact path={"/cart"} component={CartPage} />
                 <Route  exact path={"/order"} component={OrderPage} />
+
+                <Route  exact path="/ProductListByCategory/:Category" component={ProductListByCategory}/>
+                <Route exact path="/ProductListBySubCategory/:Category/:SubCategory" component={ProductListBySubCategory}/>
+
             </Switch>
             </Fragment>
          );

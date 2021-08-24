@@ -1,185 +1,61 @@
-import React, { Component, Fragment } from 'react';
-import { Container, Row, Col, Card} from 'react-bootstrap';
+import React, {Component,Fragment} from 'react';
+import {Card, Col, Container, Row} from "react-bootstrap";
+import axios from "axios";
+import ApiURL from "../../api/ApiURL";
+import {Link} from "react-router-dom";
 
 class Categories extends Component {
-    state = {  }
-    render() { 
-        return ( 
+
+    constructor() {
+        super();
+        this.state={
+            MenuData:[]
+        }
+    }
+
+
+    componentDidMount() {
+        axios.get(ApiURL.SendCategoryDetails).then(response=> {
+            this.setState({MenuData:response.data})
+        }).catch(error=> {
+
+        });
+    }
+
+
+    render() {
+
+        const MyList=this.state.MenuData;
+
+        const MyView=MyList.map((ParentList,i)=>{
+
+            return <Col key={i.toString()} className="p-0" xl={2} lg={2} md={2} sm={6} xs={6} >
+                <Link to={"ProductListByCategory/"+ParentList.ParentCategoryName}>
+                <Card className="h-100 w-100 text-center">
+                    <Card.Body>
+                        <img className="w-75" src={ParentList.ParentCategoryImg} alt=""/>
+                        <h5 className="category-name">{ParentList.ParentCategoryName}</h5>
+                    </Card.Body>
+                </Card>
+                </Link>
+            </Col>
+
+        })
+
+
+        return (
             <Fragment>
-                <Container className="text-center" fluid={true}>
-                <h4 className="section-title"> Product Category </h4>
-                <h6 className="section-sub-title"> All Category list here </h6>
+                <Container className="text-center pt-3  BetweenTwoSection" fluid={true}>
+                    <h4 className="section-title">CATEGORIES</h4>
+                    <h6 className="section-sub-title pb-3">Some Of Our Exclusive Collection, You May Like</h6>
                     <Row>
-                        <Col xl={6} lg={6} md={4} sm={6} xs={6}>
-                            <Row>
-                              <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                </Card>
-                              </Col>
-                              <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                </Card>
-                              </Col>
-                              <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                </Card>
-                              </Col>
-                              <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                </Card>
-                              </Col>
-                            </Row>
-                        </Col>
-
-                        <Col xl={6} lg={6} md={4} sm={6} xs={6}>
-                            <Row>
-                             <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                 <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                       
-                                    </Card.Body>
-                                 </Card>
-                             </Col>
-                             <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                 <Card  className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                       
-                                    </Card.Body>
-                                 </Card>
-                             </Col>
-                             <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                 <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                 </Card>
-                             </Col>
-                             <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                 <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-
-                                    </Card.Body>
-                                 </Card>
-                             </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                    
-                    <Row>
-                        <Col xl={6} lg={6} md={4} sm={6} xs={6}>
-                            <Row>
-                              <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                </Card>
-                              </Col>
-                              <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                </Card>
-                              </Col>
-                              <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                </Card>
-                              </Col>
-                              <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                </Card>
-                              </Col>
-                            </Row>
-                        </Col>
-
-                        <Col xl={6} lg={6} md={4} sm={6} xs={6}>
-                            <Row>
-                             <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                 <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                       
-                                    </Card.Body>
-                                 </Card>
-                             </Col>
-                             <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                 <Card  className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                       
-                                    </Card.Body>
-                                 </Card>
-                             </Col>
-                             <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                 <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-                                        
-                                    </Card.Body>
-                                 </Card>
-                             </Col>
-                             <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
-                                 <Card className="card w-100 image-box">
-                                    <img className="w-100" src="http://superadmin.laptopcitypro.com/storage/app/public/MMCVCoykz1xe6te9QDk60qzdP2cwU2T0crdniQU4.png" alt="" />
-                                    <Card.Body>
-                                        <p className="p.category-name">This Lenovo Leptop</p>
-
-                                    </Card.Body>
-                                 </Card>
-                             </Col>
-                            </Row>
-                        </Col>
+                        {MyView}
                     </Row>
                 </Container>
+
             </Fragment>
-         );
+        );
     }
 }
- 
+
 export default Categories;
