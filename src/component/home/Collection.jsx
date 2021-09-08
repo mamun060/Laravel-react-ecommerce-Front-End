@@ -2,20 +2,22 @@ import React, { Component, Fragment } from 'react';
 import {Container, Row, Col, Card} from 'react-bootstrap';
 import axios from "axios";
 import ApiURL from "../../api/ApiURL";
-
+import SpecialCollectionPlaceholder from "../placeholder/SpecialCollectionPlaceholder";
 
 class Collection extends Component {
     
     constructor(){
         super();
         this.state={
-            ProductData:[]
+            ProductData:[],
+            isLoading:"TopSection",
+            MainDiv:"d-none"
         }
     }
 
     componentDidMount(){
         axios.get(ApiURL.ProductListByRemark("COLLECTION")).then(response=>{
-            this.setState({ProductData:response.data})
+            this.setState({ProductData:response.data, isLoading:"d-none", MainDiv:""})
         }).catch(error=>{
 
         });
@@ -56,15 +58,19 @@ class Collection extends Component {
 
         return ( 
             <Fragment>
+
+                <SpecialCollectionPlaceholder isLoading={this.state.isLoading} />
+
+                <div className={this.state.MainDiv}>
                 <Container className="text-center">
                     <h4 className="section-title"> The Best Collection </h4>
                     <h6 className="section-sub-title"> Please your letest product </h6>
                 </Container>
                  <Row>
-
                   {MyView}
-                    
                  </Row>
+                </div>
+
             </Fragment>
          );
     }

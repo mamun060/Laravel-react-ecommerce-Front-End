@@ -1,20 +1,23 @@
 import React, { Component, Fragment } from 'react';
 import {Container, Card, Row, Col} from 'react-bootstrap';
 import axios from "axios";
+import {Link} from "react-router-dom";
 import ApiURL from "../../api/ApiURL";
-
+import FeaturedProductLoader from "../placeholder/FeaturedProductLoader";
 
 class FeaturedProducts extends Component {
    constructor(){
        super();
        this.state={
-           ProductData:[]
+           ProductData:[],
+           isLoading:"TopSection",
+           MainDiv:"d-none"
        }
    }
 
    componentDidMount(){
        axios.get(ApiURL.ProductListByRemark("FEATURE")).then(response=>{
-           this.setState({ProductData:response.data})
+           this.setState({ProductData:response.data, isLoading:"d-none",MainDiv:" "})
        }).catch(error=>{
 
        });
@@ -57,6 +60,9 @@ class FeaturedProducts extends Component {
 
         return ( 
         <Fragment>
+            <FeaturedProductLoader isLoading={this.state.isLoading}/>
+
+            <div className={this.state.MainDiv}>
             <Container className="text-center" fluid={true}>
                 <h4 className="section-title"> Feature product </h4>
                 <h6 className="section-sub-title"> All 2020 product is here </h6>
@@ -64,6 +70,8 @@ class FeaturedProducts extends Component {
                    {MyView}
                 </Row>
             </Container>
+            </div>
+
         </Fragment> 
         );
     }

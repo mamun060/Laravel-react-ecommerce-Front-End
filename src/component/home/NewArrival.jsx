@@ -7,14 +7,16 @@ import "slick-carousel/slick/slick-theme.css";
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import ApiURL from "../../api/ApiURL";
-
+import NewArrivalPlaceholder from "../placeholder/NewArrivalPlaceholder";
 
 class NewArrival extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            ProductData:[]
+            ProductData:[],
+            isLoading:"TopSection",
+            MainDiv:"d-none"
         }
         this.next=this.next.bind(this);
         this.previous=this.previous.bind(this)
@@ -29,7 +31,7 @@ class NewArrival extends Component {
 
     componentDidMount(){
     axios.get(ApiURL.ProductListByRemark("NEW")).then(response=>{
-        this.setState({ProductData:response.data})
+        this.setState({ProductData:response.data, isLoading:"d-none",MainDiv:" "})
     }).catch(error=>{
 
     });
@@ -110,6 +112,11 @@ class NewArrival extends Component {
           })
 
         return ( 
+
+          <Fragment>
+            <NewArrivalPlaceholder isLoading={this.state.isLoading}/>
+
+           <div className={this.state.MainDiv}>
            <Container className="text-center BetweenTwoSection" fluid={true}>
               <h4 className="section-title px-0 mx-0 ">NEW ARRIVAL
                     <a className="btn btn-sm ml-2 site-btn" onClick={this.previous} >
@@ -125,6 +132,9 @@ class NewArrival extends Component {
                     {MyView}
                 </Slider>
            </Container>
+           </div>
+
+          </Fragment>
          );
     }
 }

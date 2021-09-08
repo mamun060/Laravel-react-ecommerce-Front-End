@@ -4,6 +4,7 @@ import MegaMenu from "./MegaMenu";
 import SliderHome from "./SliderHome";
 import ApiURL from "../../api/ApiURL";
 import axios from 'axios';
+import SliderLoader from "../placeholder/SliderLoader";
 
 class HomeTop extends Component {
         
@@ -11,7 +12,9 @@ class HomeTop extends Component {
             super();
             this.state={
                 MenuData:[],
-                SliderData:[]
+                SliderData:[],
+                isLoading:"TopSection",
+                MainDiv:"d-none"
             }
         }
 
@@ -26,7 +29,7 @@ class HomeTop extends Component {
 
             // home slider section dynamic data get
             axios.get(ApiURL.SendSliderInfo).then(response=> {
-              this.setState({ SliderData:response.data })
+              this.setState({ SliderData:response.data, isLoading:"d-none",MainDiv:" " })
             }).catch(error=> {
 
             });
@@ -36,7 +39,10 @@ class HomeTop extends Component {
     render() {
         return (
             <Fragment>
-                <Container className="p-0 TopSection  overflow-hidden" fluid={true}>
+                <SliderLoader isLoading={this.state.isLoading} />
+
+              <div className={this.state.MainDiv}>
+              <Container className="p-0 TopSection  overflow-hidden" fluid={true}>
                     <Row className="p-0 m-0 overflow-hidden">
                         <Col className="p-0 m-0 overflow-hidden" lg={3} md={3} sm={12}>
                                 <MegaMenu data={this.state.MenuData} />
@@ -46,6 +52,7 @@ class HomeTop extends Component {
                         </Col>
                     </Row>
                 </Container>
+              </div>
                 
             </Fragment>
         );
