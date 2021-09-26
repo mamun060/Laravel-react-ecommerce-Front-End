@@ -82,8 +82,8 @@ class NewArrival extends Component {
           const MyView = MyList.map((ProductList,i)=>{
 
               if(ProductList.special_price=="NA"){
-               return <div>
-                <Link to="/productdetails"> 
+               return <div className="p-1">
+                 <Link to={"productDetails/"+ProductList.product_code}>
                     <Card className="card text-center w-100 image-box">
                     <img src={ProductList.image} alt=""/>
                         <Card.Body>
@@ -95,8 +95,8 @@ class NewArrival extends Component {
             </div>
               }
               else {
-                return <div>
-                <Link to="/productdetails"> 
+                return <div className="p-1">
+                 <Link to={"productDetails/"+ProductList.product_code}>  
                     <Card className="card text-center w-100 image-box">
                     <img src={ProductList.image} alt=""/>
                         <Card.Body>

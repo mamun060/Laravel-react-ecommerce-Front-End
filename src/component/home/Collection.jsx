@@ -3,6 +3,8 @@ import {Container, Row, Col, Card} from 'react-bootstrap';
 import axios from "axios";
 import ApiURL from "../../api/ApiURL";
 import SpecialCollectionPlaceholder from "../placeholder/SpecialCollectionPlaceholder";
+import {Link} from 'react-router-dom';
+
 
 class Collection extends Component {
     
@@ -30,6 +32,7 @@ class Collection extends Component {
         
         if(ProductList.special_price=="NA"){
             return <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
+            <Link to={"productDetails/"+ProductList.product_code}> 
             <Card className="card h-100 w-100  image-box ">
                <img src={ProductList.image} alt=""/>
                <Card.Body>
@@ -37,10 +40,12 @@ class Collection extends Component {
                    <p className="product-price-on-card">Price: { ProductList.price}TK</p>
                </Card.Body>
            </Card>
+           </Link>
           </Col>
         } 
         else {
             return <Col key={1} lg={3} xl={3} md={3} sm={4} xs={6}>
+        <Link to={"productDetails/"+ProductList.product_code}> 
             <Card className="card h-100 w-100  image-box ">
                 <img src={ProductList.image} alt=""/>
                 <Card.Body>
@@ -50,6 +55,7 @@ class Collection extends Component {
                     </p>
                 </Card.Body>
             </Card>
+            </Link>
           </Col>
         }
 

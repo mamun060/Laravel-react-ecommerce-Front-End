@@ -29,7 +29,7 @@ class AppRoute extends Component {
                 <Route  exact path={"/policy"} component={PolicyPage} />
                 <Route  exact path={"/purchase"} component={PurchasePage} />
                 <Route  exact path={"/refund"} component={RefundPage} />
-                <Route  exact path={"/productdetails"} component={ProductDetailsPage} />
+                <Route  exact path="/productDetails/:code" render={(props) => <ProductDetailsPage {...props} key={Date.now()}/>}/>
                 <Route  exact path={"/pushnotification"} component={NotificationPage} />
                 <Route  exact path={"/favourite"} component={FavouritePage} />
                 <Route  exact path={"/cart"} component={CartPage} />
