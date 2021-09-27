@@ -1,24 +1,18 @@
-/* eslint-disable no-useless-constructor */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable eqeqeq */
 import React, {Component,Fragment} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import  ReactDom from 'react-dom';
 
-
 class ProductDetails extends Component {
     constructor() {
         super();
     }
-
     imgOnclick(event){
       let imgSrc= event.target.getAttribute('src');
       let PreviewImg= document.getElementById('PreviewImg');
       ReactDom.findDOMNode(PreviewImg).setAttribute('src',imgSrc)
     }
-
-
 
   PriceOption(special_price,price){
       if(special_price==="NA"){
@@ -35,8 +29,6 @@ class ProductDetails extends Component {
       }
 
   }
-
-
     render() {
         let ProductData=this.props.ProductData;
 
@@ -59,9 +51,6 @@ class ProductDetails extends Component {
         let size =ProductData['ProductDetails'][0]['size'];
         let details =ProductData['ProductDetails'][0]['details'];
 
-
-
-
         var ColorDiv="d-none"
         if(color!="NA"){
             let ColorArray = color.split(',');
@@ -74,8 +63,6 @@ class ProductDetails extends Component {
             ColorDiv="d-none"
         }
 
-
-
         var SizeDiv="d-none"
         if(size!="NA"){
             let SizeArray = size.split(',');
@@ -87,9 +74,6 @@ class ProductDetails extends Component {
         else{
             SizeDiv="d-none"
         }
-
-
-
 
         return (
             <Fragment>
