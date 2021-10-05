@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {Component} from 'react';
 import cardPhotoPlaceholder from '../../assets/images/cardPhotoPlaceholder.svg'
 class ProductListLoader extends Component {
     render() {
         let isLoading=this.props.isLoading;
-        return (.
+        return (
             
             <div className={isLoading}>
                 <div className="container-fluid TopSection">

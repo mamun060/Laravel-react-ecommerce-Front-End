@@ -24,9 +24,12 @@ class ApiURL{
     static  ProductDetails(ProductCode){
         return this.BaseURL+"ProductDetails/"+ProductCode;
     }
-
     static NotificationHistory=this.BaseURL+"NotificationHistory";
 
+    static  ProductListBySearch(SearchKey){
+        return this.BaseURL+"ProductBySearch/"+SearchKey;
+    }
+        
 }
 
 export default ApiURL;

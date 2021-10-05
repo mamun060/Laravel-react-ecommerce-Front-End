@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from 'react';
-import {Card, Col, Container, Row} from "react-bootstrap";
+import {Breadcrumb, Card, Col, Container, Row} from "react-bootstrap";
 import axios from 'axios';
 // eslint-disable-next-line no-unused-vars
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import ApiURL from "../../api/ApiURL";
 import {toast, ToastContainer} from "react-toastify";
-
+import {Link} from "react-router-dom";
 
 class About extends Component {
 
@@ -49,9 +49,12 @@ class About extends Component {
         return (
             <Fragment>
                 <Container className="TopSection">
+                    <Breadcrumb>
+                        <Breadcrumb.Item> <Link to="/">Home</Link>    </Breadcrumb.Item>
+                        <Breadcrumb.Item> <Link to="/about">About</Link>    </Breadcrumb.Item>
+
+                    </Breadcrumb>
                     <Row>
-
-
                         <Col className="mt-2" md={12} lg={12} sm={12} xs={12}>
 
                             <Card className={this.state.loaderDiv}>
